@@ -5,6 +5,15 @@
   --grid-col-margin: 2.5rem;
 }
 
+@keyframes animate-header {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -29,7 +38,8 @@ footer {
 
 header {
   height: calc(100vh - 2 * var(--main-container-margin));
-  background: url("../assets/images/Header.jpg") no-repeat;
+  background: linear-gradient(rgba(0, 76, 255, 0.547), rgba(0, 94, 255, 0.678)),
+    url("../assets/images/Header.jpg") no-repeat;
   background-size: cover;
   width: 100%;
   box-sizing: border-box;
@@ -45,6 +55,7 @@ header .container {
   position: absolute;
   top: 7rem;
   left: calc(50% - 20rem);
+  animation: animate-header 1s ease-out;
 }
 
 header .title {
@@ -65,7 +76,7 @@ header .button {
   font-size: 0.9rem;
   padding: 1.2rem;
   text-decoration: none;
-  color: gray;
+  color: rgb(72, 72, 72);
   margin-top: 5rem !important;
   transition: all 300ms ease-out;
 }
@@ -256,7 +267,7 @@ footer a {
 }
 
 footer a:hover {
-    color: rgb(0, 238, 255);
+  color: rgb(0, 238, 255);
 }
 
 footer p {
@@ -306,8 +317,8 @@ footer hr {
 }
 
 .menu li a:hover {
-    font-size: 2rem;
-    color: rgb(255, 0, 0);
+  font-size: 2rem;
+  color: rgb(255, 0, 208);
 }
 
 .collapse-label {
