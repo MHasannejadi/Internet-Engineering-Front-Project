@@ -249,24 +249,40 @@ footer .col {
 }
 
 footer a {
-    cursor: pointer;
-    margin: 0 1rem;
-    font-size: 0.9rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  font-size: 0.9rem;
+  transition: color 300ms ease-out;
+}
+
+footer a:hover {
+    color: rgb(0, 238, 255);
 }
 
 footer p {
-    margin: 0;
-    text-align: left;
+  margin: 0;
+  text-align: left;
 }
 
 footer hr {
-    margin-bottom: 1rem;
-    border: 1px solid rgba(56, 56, 56, 0.462);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(56, 56, 56, 0.462);
 }
 
 .menu {
-  display: block;
-  /* background-color: black; */
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(115, 0, 255) 0%,
+    rgb(0, 128, 255) 100%
+  );
+  transition: all 400ms ease-in;
   color: white;
   text-align: center;
   padding: 10px;
@@ -274,9 +290,24 @@ footer hr {
 }
 
 .menu ul {
-  display: none;
+  margin-top: 10rem;
   font-size: 60%;
   padding-top: 30px;
+  list-style-type: none;
+}
+.menu li {
+  margin-top: 3rem;
+}
+.menu li a {
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: white;
+  transition: all 300ms ease-out;
+}
+
+.menu li a:hover {
+    font-size: 2rem;
+    color: rgb(255, 0, 0);
 }
 
 .collapse-label {
@@ -288,38 +319,35 @@ footer hr {
 #collapse {
   display: none;
 }
-#collapse:checked + .menu ul {
-  display: block;
-}
 .hamburger {
   position: absolute;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2rem;
+  height: 2rem;
   z-index: 99;
   cursor: pointer;
-  padding: 0.7rem;
+  padding: 0.8rem;
   background-color: white;
   border-radius: 50%;
-}
-.hamburger:hover {
-  animation: zoom 300ms ease-in;
 }
 .lines {
   background-color: #000;
   width: 100%;
-  height: 3px;
+  height: 5px;
   margin: 5px 0;
   transition: all 450ms ease-in;
 }
-.close-hamburger .lines {
+#collapse:checked ~ .menu {
+  display: block;
+}
+#collapse:checked ~ .collapse-label .hamburger .lines {
   cursor: pointer;
 }
-.close-hamburger .line-top {
+#collapse:checked ~ .collapse-label .hamburger .line-top {
   transform: translateY(200%) rotate(45deg);
 }
-.close-hamburger .line-mid {
+#collapse:checked ~ .collapse-label .hamburger .line-mid {
   opacity: 0;
 }
-.close-hamburger .line-bottom {
+#collapse:checked ~ .collapse-label .hamburger .line-bottom {
   transform: translateY(-200%) rotate(135deg);
 }
