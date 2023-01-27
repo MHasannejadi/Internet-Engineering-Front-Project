@@ -22,6 +22,11 @@ body {
   text-align: center;
 }
 
+body:has(#collapse:checked),
+body:has(.open-modal-checkbox:checked) {
+  overflow: hidden;
+}
+
 main {
   margin: 1rem;
   position: relative;
@@ -215,8 +220,8 @@ header .button:hover {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   transform: rotateY(180deg);
   padding: 2rem;
   box-sizing: border-box;
@@ -228,22 +233,126 @@ header .button:hover {
   margin-top: 1rem;
 }
 
+.open-modal-checkbox {
+  display: none;
+}
+
+.flip-card #btn {
+  background: #0003ff;
+  padding: 1rem 3.5rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  border-radius: 9px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: rgba(101, 101, 101, 0.5);
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.modal .container {
+  position: relative;
+  width: 85%;
+  height: 80%;
+  margin-top: 5% !important;
+  background: white;
+  margin: auto;
+  color: rgb(95, 95, 95);
+}
+
+.modal .context {
+  padding: 2rem;
+  text-align: left;
+}
+
+.modal img {
+  height: 100%;
+  float: left;
+  margin-right: 2rem;
+}
+
+.modal .title {
+  color: blue;
+  font-size: 2rem;
+}
+
+.modal .description {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.modal .description p {
+  width: 30%;
+  float: left;
+  padding: 0 2%;
+  box-sizing: border-box;
+  line-height: 1.5rem;
+}
+
+.modal .description .desc1 {
+  border-right: 1px solid gray;
+  padding-left: 0;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: none;
+  cursor: pointer;
+  color: black;
+}
+
+#book1:has(input:checked) + #modal1 {
+  display: block;
+}
+
+#book2:has(input:checked) + #modal2 {
+  display: block;
+}
+
+#book3:has(input:checked) + #modal3 {
+  display: block;
+}
+
+.flip-card:has(input:checked) + .modal .close {
+  display: block;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 3rem;
+  left: 38%;
+}
+
 .buy-btn {
   text-decoration: none;
+  text-align: center;
   background: blue;
   color: white;
-  padding: 1rem;
-  border-radius: 7px;
-  width: 8rem;
-  display: block;
-  margin: auto;
-  margin-top: 15rem;
+  padding: 1.5rem 2.5rem;
+  border-radius: 2rem;
   transition: all 300ms ease-out;
 }
 
 .buy-btn:hover {
-  background: rgb(0, 200, 255);
-  color: black;
+  background: rgb(255, 41, 209);
+  /* color: black; */
 }
 
 footer {
@@ -318,7 +427,7 @@ footer hr {
 
 .menu li a:hover {
   font-size: 2rem;
-  color: rgb(255, 0, 208);
+  color: rgb(0, 0, 0);
 }
 
 .collapse-label {
@@ -347,7 +456,7 @@ footer hr {
   margin: 5px 0;
   transition: all 450ms ease-in;
 }
-#collapse:checked ~ .menu {
+#collapse:checked + label .menu {
   display: block;
 }
 #collapse:checked ~ .collapse-label .hamburger .lines {
